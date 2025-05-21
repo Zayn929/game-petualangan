@@ -1,45 +1,44 @@
-<!DOCTYPE html><html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Game Petualangan Gua</title>
-  <style>
-    body {
-      background-color: #1e1e1e;
-      color: #fff;
-      font-family: 'Courier New', Courier, monospace;
-      padding: 20px;
-    }
-    #game {
-      max-width: 600px;
-      margin: auto;
-      background: #2e2e2e;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-  </style>
-</head>
-<body>
-  <div id="game">
-    <pre id="story">Selamat datang di Gua Misterius!
-Lo berdiri di depan pintu gua. Mau masuk atau kabur?</pre>
-    <div id="choices">
-      <button onclick="choose('masuk')">Masuk</button>
-      <button onclick="choose('kabur')">Kabur</button>
-    </div>
-  </div>  <script>
-    let stage = 0;
+def mulai_game():
+    print("Selamat datang di Gua Misterius!")
+    print("Lo berdiri di depan pintu gua. Mau masuk atau kabur?")
+    
+    pilihan = input(">> (masuk/kabur): ").lower()
+    
+    if pilihan == "masuk":
+        ruangan_1()
+    elif pilihan == "kabur":
+        print("Lo kabur ketakutan... Game over.")
+    else:
+        print("Gak ngerti maksud lo. Coba lagi.")
+        mulai_game()
 
-    function choose(option) {
-      const story = document.getElementBy
+def ruangan_1():
+    print("\nLo masuk ke ruangan pertama. Ada dua jalan: kiri dan kanan.")
+    pilihan = input(">> (kiri/kanan): ").lower()
+    
+    if pilihan == "kiri":
+        jebakan()
+    elif pilihan == "kanan":
+        ruangan_2()
+    else:
+        print("Pilihan gak jelas. Ulang lagi.")
+        ruangan_1()
+
+def jebakan():
+    print("\nOops! Lo masuk ke jebakan berduri. Game over.")
+
+def ruangan_2():
+    print("\nLo menemukan peti harta karun!")
+    print("Tapi ada monster tidur di sebelahnya. Mau ambil harta atau kabur?")
+    pilihan = input(">> (ambil/kabur): ").lower()
+    
+    if pilihan == "ambil":
+        print("Monster bangun dan makan lo. Game over.")
+    elif pilihan == "kabur":
+        print("Lo kabur dengan selamat. Selamat, lo selamat!")
+    else:
+        print("Hah? Gak jelas. Coba lagi.")
+        ruangan_2()
+
+# Mulai game
+mulai_game()
